@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-t_n3yp6^i8)^_a((=z=@l8ey(txbq^i&%*^t6q!!q74dn+)x^i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,10 +77,16 @@ WSGI_APPLICATION = 'speechreview.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    # 'default': {
+    #     # 'ENGINE': 'django.db.backends.sqlite3',
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'railway',
+    #     'USER': 'postgres',
+    #     'PASSWORD': 'JUrLHuGLKInktGRizojgtlToNaiSbCiF',
+    #     'HOST': 'postgres.railway.internal',
+    #     'PORT': '5432',
+    # }
+"default": dj_database_url.parse('postgresql://postgres:JUrLHuGLKInktGRizojgtlToNaiSbCiF@viaduct.proxy.rlwy.net:47426/railway')
 }
 
 
@@ -117,6 +124,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_DIRS = [STATIC_DIR,]
 MEDIA_URL = '/audio/'
 MEDIA_ROOT = MEDIA_DIR

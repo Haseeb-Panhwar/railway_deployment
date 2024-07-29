@@ -1,0 +1,1 @@
+web: gunicorn speechreview.wsgi --log-file -
