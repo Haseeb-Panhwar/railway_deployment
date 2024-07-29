@@ -6,7 +6,7 @@ import os
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-aai.settings.api_key = os.environ['API']
+aai.settings.api_key = "00b5bc7c6c5747ab95e8909b86946862"
 
 # Create your views here.
 sentiment_list = []
